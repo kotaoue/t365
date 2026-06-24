@@ -7,6 +7,8 @@ type TextInputPanelProps = {
   onYearChange: (value: number) => void;
 };
 
+const WEEKDAY_NAMES = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
 export function TextInputPanel({
   text,
   year,
@@ -15,6 +17,8 @@ export function TextInputPanel({
   onTextChange,
   onYearChange,
 }: TextInputPanelProps) {
+  const startWeekday = WEEKDAY_NAMES[new Date(Date.UTC(year, 0, 1)).getUTCDay()];
+
   return (
     <header className="panel stack-lg">
       <div className="stack-sm">
@@ -53,6 +57,7 @@ export function TextInputPanel({
             ))}
           </select>
         </div>
+        <span className="year-note">{year} starts on {startWeekday}.</span>
       </div>
 
       {warning ? <p className="warning-text">{warning}</p> : null}

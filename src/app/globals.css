@@ -160,6 +160,12 @@ code {
   font-size: 0.94rem;
 }
 
+.year-note {
+  align-self: center;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
 .content-grid {
   display: grid;
   gap: 20px;
