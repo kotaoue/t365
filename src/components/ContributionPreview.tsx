@@ -24,10 +24,6 @@ export function ContributionPreview({ cells, filledCount }: ContributionPreviewP
   return (
     <section className="panel stack-md">
       <div className="panel-heading">
-        <div>
-          <h2 className="section-title">Preview</h2>
-          <p className="section-copy">A 7×53 GitHub-like grid showing where commits will land.</p>
-        </div>
         <span className="pill">{filledCount} dates</span>
       </div>
 
