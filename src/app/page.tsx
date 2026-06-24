@@ -9,7 +9,7 @@ import { normalizeInputText } from "../lib/font5x7";
 import { textToDates } from "../lib/text-to-dates";
 
 const CURRENT_YEAR = new Date().getUTCFullYear();
-const YEARS = Array.from({ length: CURRENT_YEAR - 2015 + 1 }, (_, index) => 2015 + index);
+const YEARS = Array.from({ length: 16 }, (_, index) => CURRENT_YEAR - 10 + index);
 
 export default function Home() {
   const [text, setText] = useState("HELLO");
