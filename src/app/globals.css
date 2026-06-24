@@ -161,7 +161,7 @@ code {
 }
 
 .year-note {
-  align-self: center;
+  display: block;
   color: var(--muted);
   font-size: 0.92rem;
 }

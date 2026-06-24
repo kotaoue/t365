@@ -56,8 +56,8 @@ export function TextInputPanel({
               </option>
             ))}
           </select>
+          <span className="year-note">starts on {startWeekday}.</span>
         </div>
-        <span className="year-note">{year} starts on {startWeekday}.</span>
       </div>
 
       {warning ? <p className="warning-text">{warning}</p> : null}
