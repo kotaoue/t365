@@ -67,12 +67,12 @@ test("builds a full preview grid with inactive and active cells", () => {
   const bitmap = Array.from({ length: 7 }, () => Array.from({ length: 53 }, () => false));
   bitmap[1][0] = true;
 
-  const grid = createContributionGrid(2017, bitmap, 3);
+  const grid = createContributionGrid(2017, bitmap);
   const activeCell = grid.find((cell) => cell.row === 1 && cell.column === 0);
   const inactiveCell = grid.find((cell) => cell.row === 0 && cell.column === 0);
 
   assert.equal(grid.length, 371);
   assert.equal(activeCell?.active, true);
-  assert.equal(activeCell?.level, 3);
+  assert.equal(activeCell?.level, 1);
   assert.equal(inactiveCell?.active, false);
 });

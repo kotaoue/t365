@@ -1,25 +1,21 @@
 type TextInputPanelProps = {
   text: string;
   year: number;
-  density: 1 | 2 | 3 | 4;
   years: number[];
   maxCharacters: number;
   warning: string | null;
   onTextChange: (value: string) => void;
   onYearChange: (value: number) => void;
-  onDensityChange: (value: 1 | 2 | 3 | 4) => void;
 };
 
 export function TextInputPanel({
   text,
   year,
-  density,
   years,
   maxCharacters,
   warning,
   onTextChange,
   onYearChange,
-  onDensityChange,
 }: TextInputPanelProps) {
   return (
     <header className="panel stack-lg">
@@ -56,22 +52,6 @@ export function TextInputPanel({
             {years.map((option) => (
               <option key={option} value={option}>
                 {option}
-              </option>
-            ))}
-          </select>
-        </label>
-
-        <label className="stack-xs" htmlFor="density-select">
-          <span className="field-label">Density</span>
-          <select
-            id="density-select"
-            className="select-input"
-            value={density}
-            onChange={(event) => onDensityChange(Number(event.target.value) as 1 | 2 | 3 | 4)}
-          >
-            {[1, 2, 3, 4].map((option) => (
-              <option key={option} value={option}>
-                Level {option}
               </option>
             ))}
           </select>

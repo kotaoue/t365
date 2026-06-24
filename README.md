@@ -48,4 +48,3 @@ The UI shows each generated date in both forms:
 
 - GitHub contribution graphs do not always update instantly after a commit.
 - Contribution visibility can also depend on commit email, repository visibility, and GitHub processing delays.
-- The density selector only changes preview coloring; it does not change the generated dates.

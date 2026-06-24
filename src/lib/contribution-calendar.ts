@@ -51,7 +51,6 @@ export function mapBitmapToDates(bitmap: Bitmap, year: number): ContributionDate
 export function createContributionGrid(
   year: number,
   bitmap: Bitmap,
-  density: 1 | 2 | 3 | 4,
 ): ContributionCell[] {
   const cells: ContributionCell[] = [];
 
@@ -66,7 +65,7 @@ export function createContributionGrid(
         column,
         active,
         inYear,
-        level: active ? density : 0,
+        level: active ? 1 : 0,
         display: formatDisplayDate(date),
         value: formatValueDate(date),
       });

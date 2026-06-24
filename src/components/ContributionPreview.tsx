@@ -1,7 +1,7 @@
 import type { ContributionCell } from "../types/contribution";
 
 const EMPTY_CELL_COLOR = "#161b22";
-const LEVEL_COLORS = ["#0e4429", "#006d32", "#26a641", "#39d353"];
+const ACTIVE_CELL_COLOR = "#39d353";
 
 function getCellColor(cell: ContributionCell): string {
   if (!cell.inYear) {
@@ -12,7 +12,7 @@ function getCellColor(cell: ContributionCell): string {
     return EMPTY_CELL_COLOR;
   }
 
-  return LEVEL_COLORS[cell.level - 1];
+  return ACTIVE_CELL_COLOR;
 }
 
 type ContributionPreviewProps = {
@@ -44,16 +44,6 @@ export function ContributionPreview({ cells, filledCount }: ContributionPreviewP
         </div>
       </div>
 
-      <div className="legend-row" aria-hidden="true">
-        <span>Less</span>
-        <div className="legend-scale">
-          <span className="legend-swatch" style={{ backgroundColor: EMPTY_CELL_COLOR }} />
-          {LEVEL_COLORS.map((color) => (
-            <span key={color} className="legend-swatch" style={{ backgroundColor: color }} />
-          ))}
-        </div>
-        <span>More</span>
-      </div>
     </section>
   );
 }
