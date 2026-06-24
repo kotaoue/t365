@@ -1,6 +1,6 @@
 # t365
 
-`t365` is a fully client-side tool for turning short text into a GitHub contribution-calendar pattern. Type uppercase letters, digits, or spaces, preview the 7×53 grid, and copy the real commit dates you need to light up the graph.
+`t365` converts text into GitHub contribution calendar dates on a 7×53 grid. Type letters, digits, or spaces to generate commit dates.
 
 ## Run locally
 

@@ -23,7 +23,7 @@ export function TextInputPanel({
         <p className="eyebrow">GitHub contribution text</p>
         <h1 className="hero-title">t365</h1>
         <p className="hero-copy">
-          Type uppercase letters, digits, and spaces to turn text into contribution dates you can commit on. A 7×53 GitHub-like grid showing where commits will land.
+          Turn text into contribution dates on a 7×53 grid.
         </p>
       </div>
 
