@@ -13,8 +13,44 @@ export function DateList({ dates, displayDates, copied, onCopyIso, onCopyDisplay
     <section className="panel stack-md">
       <div className="panel-heading">
         <h2 className="section-title">Dates</h2>
-        <button className="copy-button" type="button" onClick={onCopyIso} disabled={dates.length === 0}>
-          {copied ? "Copied" : "Copy YYYY-MM-DD"}
+        <button
+          className="copy-button copy-icon-button"
+          type="button"
+          onClick={onCopyIso}
+          disabled={dates.length === 0}
+          title={copied ? "Copied" : "Copy YYYY-MM-DD"}
+          aria-label={copied ? "Copied" : "Copy YYYY-MM-DD"}
+        >
+          {copied ? (
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M20 6L9 17l-5-5"
+                fill="none"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              />
+            </svg>
+          ) : (
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M9 9h9v11H9z"
+                fill="none"
+                stroke="currentColor"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              />
+              <path
+                d="M6 15H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v1"
+                fill="none"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              />
+            </svg>
+          )}
         </button>
       </div>
 
