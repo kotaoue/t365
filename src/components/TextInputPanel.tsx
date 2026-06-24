@@ -38,7 +38,7 @@ export function TextInputPanel({
         <textarea
           id="text-input"
           className="text-input"
-          rows={3}
+          rows={1}
           value={text}
           onChange={(event) => onTextChange(event.target.value)}
           placeholder="HELLO 365"
@@ -74,11 +74,10 @@ export function TextInputPanel({
           >
             {startWeeks.map((option) => (
               <option key={option} value={option}>
-                {option}周目から
+                From week {option}
               </option>
             ))}
           </select>
-          <span className="year-note">◯周目から書き出す</span>
         </div>
       </div>
 

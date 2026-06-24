@@ -124,8 +124,8 @@ code {
 }
 
 .text-input {
-  min-height: 110px;
-  resize: vertical;
+  min-height: auto;
+  resize: none;
 }
 
 .text-input:focus,
