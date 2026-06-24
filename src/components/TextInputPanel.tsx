@@ -2,9 +2,12 @@ type TextInputPanelProps = {
   text: string;
   year: number;
   years: number[];
+  startWeek: number;
+  startWeeks: number[];
   warning: string | null;
   onTextChange: (value: string) => void;
   onYearChange: (value: number) => void;
+  onStartWeekChange: (value: number) => void;
 };
 
 const WEEKDAY_NAMES = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -13,9 +16,12 @@ export function TextInputPanel({
   text,
   year,
   years,
+  startWeek,
+  startWeeks,
   warning,
   onTextChange,
   onYearChange,
+  onStartWeekChange,
 }: TextInputPanelProps) {
   const startWeekday = WEEKDAY_NAMES[new Date(Date.UTC(year, 0, 1)).getUTCDay()];
 
@@ -57,6 +63,22 @@ export function TextInputPanel({
             ))}
           </select>
           <span className="year-note">starts on {startWeekday}.</span>
+        </div>
+        <div className="stack-xs">
+          <select
+            id="start-week-select"
+            className="select-input"
+            value={startWeek}
+            onChange={(event) => onStartWeekChange(Number(event.target.value))}
+            aria-label="Start week"
+          >
+            {startWeeks.map((option) => (
+              <option key={option} value={option}>
+                {option}周目から
+              </option>
+            ))}
+          </select>
+          <span className="year-note">◯周目から書き出す</span>
         </div>
       </div>
 

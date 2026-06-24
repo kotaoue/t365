@@ -76,3 +76,25 @@ test("builds a full preview grid with inactive and active cells", () => {
   assert.equal(activeCell?.level, 1);
   assert.equal(inactiveCell?.active, false);
 });
+
+test("shifts mapped dates when a start column offset is provided", () => {
+  const bitmap = Array.from({ length: 7 }, () => Array.from({ length: 53 }, () => false));
+  bitmap[1][0] = true;
+
+  const dates = mapBitmapToDates(bitmap, 2017, 1);
+
+  assert.equal(dates[0]?.display, "1/9");
+  assert.equal(dates[0]?.value, "2017-01-09");
+});
+
+test("shifts active cells in the preview grid by start column", () => {
+  const bitmap = Array.from({ length: 7 }, () => Array.from({ length: 53 }, () => false));
+  bitmap[1][0] = true;
+
+  const grid = createContributionGrid(2017, bitmap, 1);
+  const shiftedActiveCell = grid.find((cell) => cell.row === 1 && cell.column === 1);
+  const originalColumnCell = grid.find((cell) => cell.row === 1 && cell.column === 0);
+
+  assert.equal(shiftedActiveCell?.active, true);
+  assert.equal(originalColumnCell?.active, false);
+});

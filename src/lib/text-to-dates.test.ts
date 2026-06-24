@@ -12,3 +12,12 @@ test("combines bitmap rendering and date mapping", () => {
     ["1/2", "1/4", "1/6", "1/9", "1/11", "1/13", "1/16", "1/17", "1/18", "1/19", "1/20"],
   );
 });
+
+test("supports writing from a later week", () => {
+  const result = textToDates("3", 2017, 2);
+
+  assert.deepEqual(
+    result.dates.map((date) => date.display),
+    ["1/9", "1/11", "1/13", "1/16", "1/18", "1/20", "1/23", "1/24", "1/25", "1/26", "1/27"],
+  );
+});

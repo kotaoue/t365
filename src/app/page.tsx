@@ -10,14 +10,19 @@ import { textToDates } from "../lib/text-to-dates";
 
 const CURRENT_YEAR = new Date().getUTCFullYear();
 const YEARS = Array.from({ length: 16 }, (_, index) => CURRENT_YEAR - 10 + index);
+const START_WEEKS = Array.from({ length: 53 }, (_, index) => index + 1);
 
 export default function Home() {
   const [text, setText] = useState("HELLO");
   const [year, setYear] = useState(CURRENT_YEAR);
+  const [startWeek, setStartWeek] = useState(1);
   const [copied, setCopied] = useState(false);
 
-  const result = useMemo(() => textToDates(text, year), [text, year]);
-  const previewCells = useMemo(() => createContributionGrid(year, result.bitmap), [result.bitmap, year]);
+  const result = useMemo(() => textToDates(text, year, startWeek), [text, year, startWeek]);
+  const previewCells = useMemo(
+    () => createContributionGrid(year, result.bitmap, startWeek - 1),
+    [result.bitmap, startWeek, year],
+  );
   const displayDates = useMemo(() => result.dates.map((date) => date.display).join(", "), [result.dates]);
 
   async function copyText(value: string) {
@@ -51,6 +56,8 @@ export default function Home() {
           text={text}
           year={year}
           years={YEARS}
+          startWeek={startWeek}
+          startWeeks={START_WEEKS}
           warning={result.warning}
           onTextChange={(value) => {
             setCopied(false);
@@ -59,6 +66,10 @@ export default function Home() {
           onYearChange={(nextYear) => {
             setCopied(false);
             setYear(nextYear);
+          }}
+          onStartWeekChange={(nextStartWeek) => {
+            setCopied(false);
+            setStartWeek(nextStartWeek);
           }}
         />
 

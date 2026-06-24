@@ -21,23 +21,28 @@ export function formatValueDate(date: Date): string {
   return date.toISOString().slice(0, 10);
 }
 
-export function mapBitmapToDates(bitmap: Bitmap, year: number): ContributionDate[] {
+export function mapBitmapToDates(bitmap: Bitmap, year: number, startColumn = 0): ContributionDate[] {
   const dates: ContributionDate[] = [];
   const maxColumns = bitmap[0]?.length ?? 0;
 
   for (let column = 0; column < maxColumns; column += 1) {
+    const shiftedColumn = startColumn + column;
+    if (shiftedColumn >= MAX_CONTRIBUTION_COLUMNS) {
+      continue;
+    }
+
     for (let row = 0; row < CHARACTER_HEIGHT; row += 1) {
       if (!bitmap[row]?.[column]) {
         continue;
       }
 
-      const date = getContributionDate(year, column, row);
+      const date = getContributionDate(year, shiftedColumn, row);
       if (date.getUTCFullYear() !== year) {
         continue;
       }
 
       dates.push({
-        column,
+        column: shiftedColumn,
         row,
         display: formatDisplayDate(date),
         value: formatValueDate(date),
@@ -51,6 +56,7 @@ export function mapBitmapToDates(bitmap: Bitmap, year: number): ContributionDate
 export function createContributionGrid(
   year: number,
   bitmap: Bitmap,
+  startColumn = 0,
 ): ContributionCell[] {
   const cells: ContributionCell[] = [];
 
@@ -58,7 +64,8 @@ export function createContributionGrid(
     for (let column = 0; column < MAX_CONTRIBUTION_COLUMNS; column += 1) {
       const date = getContributionDate(year, column, row);
       const inYear = date.getUTCFullYear() === year;
-      const active = inYear && Boolean(bitmap[row]?.[column]);
+      const sourceColumn = column - startColumn;
+      const active = inYear && sourceColumn >= 0 && Boolean(bitmap[row]?.[sourceColumn]);
 
       cells.push({
         row,
