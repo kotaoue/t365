@@ -83,15 +83,13 @@ code {
 }
 
 .eyebrow,
-.field-label,
 .section-copy,
 .helper-row,
 .empty-state {
   color: var(--muted);
 }
 
-.eyebrow,
-.field-label {
+.eyebrow {
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -112,7 +110,7 @@ code {
 
 .text-input,
 .select-input,
-.copy-button {
+.date-copy-block {
   border: 1px solid var(--panel-border-strong);
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.02);
@@ -132,14 +130,13 @@ code {
 
 .text-input:focus,
 .select-input:focus,
-.copy-button:focus {
+.date-copy-block:focus {
   outline: none;
   border-color: rgba(57, 211, 83, 0.65);
 }
 
 .control-row,
-.helper-row,
-.panel-heading {
+.helper-row {
   display: flex;
   gap: 12px;
   justify-content: space-between;
@@ -201,36 +198,6 @@ code {
   border-radius: 3px;
 }
 
-.copy-button {
-  padding: 10px 14px;
-  font-size: 0.92rem;
-}
-
-.copy-icon-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  min-width: 44px;
-  height: 44px;
-  padding: 0;
-}
-
-.copy-icon-button svg {
-  width: 18px;
-  height: 18px;
-}
-
-.copy-button:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.05);
-  transform: translateY(-1px);
-}
-
-.copy-button:disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
-}
-
 .date-summary,
 .date-copy-block {
   border: 1px solid var(--panel-border);
@@ -243,21 +210,37 @@ code {
 }
 
 .date-copy-block {
+  position: relative;
   width: 100%;
   color: var(--foreground);
   text-align: left;
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
   white-space: pre-wrap;
+  padding: 18px 52px 18px 16px;
 }
 
 .date-copy-block:hover {
   background: rgba(255, 255, 255, 0.05);
   border-color: var(--panel-border-strong);
+  transform: translateY(-1px);
 }
 
-.date-copy-block:focus {
-  outline: none;
-  border-color: rgba(57, 211, 83, 0.65);
+.date-copy-icon {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: var(--muted);
+  pointer-events: none;
+}
+
+.date-copy-icon svg {
+  width: 18px;
+  height: 18px;
 }
 
 @media (min-width: 900px) {
@@ -277,13 +260,8 @@ code {
     border-radius: 18px;
   }
 
-  .helper-row,
-  .panel-heading {
+  .helper-row {
     flex-direction: column;
     align-items: flex-start;
-  }
-
-  .copy-button {
-    width: 100%;
   }
 }

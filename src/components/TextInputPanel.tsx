@@ -27,8 +27,7 @@ export function TextInputPanel({
         </p>
       </div>
 
-      <label className="stack-sm" htmlFor="text-input">
-        <span className="field-label">Text</span>
+      <div className="stack-sm">
         <textarea
           id="text-input"
           className="text-input"
@@ -36,18 +35,19 @@ export function TextInputPanel({
           value={text}
           onChange={(event) => onTextChange(event.target.value)}
           placeholder="HELLO 365"
+          aria-label="Text input"
           spellCheck={false}
         />
-      </label>
+      </div>
 
       <div className="control-row">
-        <label className="stack-xs" htmlFor="year-select">
-          <span className="field-label">Year</span>
+        <div className="stack-xs">
           <select
             id="year-select"
             className="select-input"
             value={year}
             onChange={(event) => onYearChange(Number(event.target.value))}
+            aria-label="Year"
           >
             {years.map((option) => (
               <option key={option} value={option}>
@@ -55,7 +55,7 @@ export function TextInputPanel({
               </option>
             ))}
           </select>
-        </label>
+        </div>
       </div>
 
       <div className="helper-row">

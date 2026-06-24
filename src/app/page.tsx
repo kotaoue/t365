@@ -19,7 +19,6 @@ export default function Home() {
   const result = useMemo(() => textToDates(text, year), [text, year]);
   const previewCells = useMemo(() => createContributionGrid(year, result.bitmap), [result.bitmap, year]);
   const displayDates = useMemo(() => result.dates.map((date) => date.display).join(", "), [result.dates]);
-  const valueDates = useMemo(() => result.dates.map((date) => date.value).join("\n"), [result.dates]);
 
   async function copyText(value: string) {
     try {
@@ -34,23 +33,15 @@ export default function Home() {
     }
   }
 
-  async function handleCopyIso() {
-    if (!valueDates) {
-      return;
-    }
-
-    await copyText(valueDates);
-
-    setCopied(true);
-    window.setTimeout(() => setCopied(false), 2000);
-  }
-
   async function handleCopyDisplay() {
     if (!displayDates) {
       return;
     }
 
     await copyText(displayDates);
+
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 2000);
   }
 
   return (
@@ -78,7 +69,6 @@ export default function Home() {
             dates={result.dates}
             displayDates={displayDates}
             copied={copied}
-            onCopyIso={handleCopyIso}
             onCopyDisplay={handleCopyDisplay}
           />
         </div>
