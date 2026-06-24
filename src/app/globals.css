@@ -216,13 +216,33 @@ code {
   opacity: 0.5;
 }
 
-.date-summary {
+.date-summary,
+.date-copy-block {
   border: 1px solid var(--panel-border);
   border-radius: 14px;
   padding: 14px 16px;
   background: rgba(255, 255, 255, 0.02);
   min-height: 74px;
   word-break: break-word;
+  line-height: 1.6;
+}
+
+.date-copy-block {
+  width: 100%;
+  color: var(--foreground);
+  text-align: left;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  white-space: pre-wrap;
+}
+
+.date-copy-block:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--panel-border-strong);
+}
+
+.date-copy-block:focus {
+  outline: none;
+  border-color: rgba(57, 211, 83, 0.65);
 }
 
 @media (min-width: 900px) {

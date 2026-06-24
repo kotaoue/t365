@@ -21,25 +21,36 @@ export default function Home() {
   const displayDates = useMemo(() => result.dates.map((date) => date.display).join(", "), [result.dates]);
   const valueDates = useMemo(() => result.dates.map((date) => date.value).join("\n"), [result.dates]);
 
-
-  async function handleCopy() {
-    if (!valueDates) {
-      return;
-    }
-
+  async function copyText(value: string) {
     try {
-      await navigator.clipboard.writeText(valueDates);
+      await navigator.clipboard.writeText(value);
     } catch {
       const element = document.createElement("textarea");
-      element.value = valueDates;
+      element.value = value;
       document.body.appendChild(element);
       element.select();
       document.execCommand("copy");
       document.body.removeChild(element);
     }
+  }
+
+  async function handleCopyIso() {
+    if (!valueDates) {
+      return;
+    }
+
+    await copyText(valueDates);
 
     setCopied(true);
     window.setTimeout(() => setCopied(false), 2000);
+  }
+
+  async function handleCopyDisplay() {
+    if (!displayDates) {
+      return;
+    }
+
+    await copyText(displayDates);
   }
 
   return (
@@ -63,7 +74,13 @@ export default function Home() {
 
         <div className="content-grid">
           <ContributionPreview cells={previewCells} filledCount={result.dates.length} />
-          <DateList dates={result.dates} displayDates={displayDates} copied={copied} onCopy={handleCopy} />
+          <DateList
+            dates={result.dates}
+            displayDates={displayDates}
+            copied={copied}
+            onCopyIso={handleCopyIso}
+            onCopyDisplay={handleCopyDisplay}
+          />
         </div>
       </div>
     </main>
