@@ -18,7 +18,6 @@ export function TextInputPanel({
   return (
     <header className="panel stack-lg">
       <div className="stack-sm">
-        <p className="eyebrow">GitHub contribution text</p>
         <h1 className="hero-title">t365</h1>
         <p className="hero-copy">
           Turn text into contribution dates on a 7×53 grid.
