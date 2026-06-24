@@ -225,29 +225,6 @@ code {
   word-break: break-word;
 }
 
-.date-table {
-  border: 1px solid var(--panel-border);
-  border-radius: 16px;
-  overflow: hidden;
-}
-
-.date-row,
-.empty-state {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.01);
-}
-
-.date-row+.date-row {
-  border-top: 1px solid var(--panel-border);
-}
-
-.date-row code {
-  color: var(--muted);
-}
-
 @media (min-width: 900px) {
   .content-grid {
     grid-template-columns: minmax(0, 1.5fr) minmax(320px, 0.9fr);
@@ -266,8 +243,7 @@ code {
   }
 
   .helper-row,
-  .panel-heading,
-  .date-row {
+  .panel-heading {
     flex-direction: column;
     align-items: flex-start;
   }
