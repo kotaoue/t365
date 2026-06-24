@@ -51,7 +51,6 @@ export default function Home() {
           text={text}
           year={year}
           years={YEARS}
-          maxCharacters={result.maxCharacters}
           warning={result.warning}
           onTextChange={(value) => {
             setCopied(false);

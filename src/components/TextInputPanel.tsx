@@ -2,7 +2,6 @@ type TextInputPanelProps = {
   text: string;
   year: number;
   years: number[];
-  maxCharacters: number;
   warning: string | null;
   onTextChange: (value: string) => void;
   onYearChange: (value: number) => void;
@@ -12,7 +11,6 @@ export function TextInputPanel({
   text,
   year,
   years,
-  maxCharacters,
   warning,
   onTextChange,
   onYearChange,
@@ -56,11 +54,6 @@ export function TextInputPanel({
             ))}
           </select>
         </div>
-      </div>
-
-      <div className="helper-row">
-        <span>Up to {maxCharacters} characters fit in 53 weeks.</span>
-        <span>{text.length} characters entered</span>
       </div>
 
       {warning ? <p className="warning-text">{warning}</p> : null}
